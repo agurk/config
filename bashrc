@@ -37,3 +37,6 @@ export HISTCONTROL=$HISTCONTROL${HISTCONTROL+,}ignoredups
  if [ -f "${HOME}/.bashrc.local" ]; then
    source "${HOME}/.bashrc.local"
  fi
+
+# other
+alias reload_config="source ${HOME}/.bashrc"
