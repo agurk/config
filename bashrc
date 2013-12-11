@@ -40,3 +40,7 @@ export HISTCONTROL=$HISTCONTROL${HISTCONTROL+,}ignoredups
 
 # other
 alias reload_config="source ${HOME}/.bashrc"
+
+if [ -e "${HOME}/tools" ]; then
+    export PATH=$PATH:${HOME}/tools
+fi
