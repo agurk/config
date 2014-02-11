@@ -64,7 +64,7 @@ export SVN_EDITOR=vim
 function set_PS1_title
 {
     if [[ -n $SSH_CLIENT ]] || [[ -n $SSH_TTY ]]; then
-        IS_REMOTE_SESSION=true
+            IS_REMOTE_SESSION=true
     fi
 
     # set PS1
