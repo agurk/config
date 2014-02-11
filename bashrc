@@ -28,6 +28,7 @@ export HISTCONTROL=$HISTCONTROL${HISTCONTROL+,}ignoredups
  alias egrep='egrep --color=auto'              # show differences in colour
  alias fgrep='fgrep --color=auto'              # show differences in colour
  alias igrep='grep -i'
+ alias lookfor='ls -lrt | igrep '
 #
 # Some shortcuts for different directory listings
  alias ls='ls -hF --color=tty'                 # classify files in colour
@@ -58,3 +59,39 @@ if ! shopt -oq posix; then
 fi
 
 export SVN_EDITOR=vim
+
+
+function set_PS1_title
+{
+    if [[ -n $SSH_CLIENT ]] || [[ -n $SSH_TTY ]]; then
+        IS_REMOTE_SESSION=true
+    fi
+
+    # set PS1
+    if [[ -z $IS_REMOTE_SESSION ]]; then
+	export PS1="\n(\[\e[32m\]\u@\h) \[\e[33m\]\w\[\e[0m\]\n\$ "
+    else
+	export PS1="\n\[\e[32m\]\u@\h \[\e[33m\]\w\[\e[0m\]\n\$ "
+    fi
+    
+    # Set the term title
+    case $TERM in
+        xterm*)
+    	if [[ -z $IS_REMOTE_SESSION ]]; then
+    	    PROMPT_COMMAND='printf "\033]0;%s\007" "${PWD/#$HOME/~}"'
+    	else
+    	    PROMPT_COMMAND='printf "\033]0;%s@%s %s\007" "${USER}" "${HOSTNAME%%.*}" "${PWD/#$HOME/~}"'
+    	fi
+    
+        ;;
+        screen)
+    	if [[ -z $IS_REMOTE_SESSION ]]; then
+    	    PROMPT_COMMAND='printf "\033]0;%s\033\\" "${PWD/#$HOME/~}"'
+    	else
+    	    PROMPT_COMMAND='printf "\033]0;%s@%s %s\033\\" "${USER}" "${HOSTNAME%%.*}" "${PWD/#$HOME/~}"'
+    	fi
+        ;;
+    esac
+}
+
+set_PS1_title
