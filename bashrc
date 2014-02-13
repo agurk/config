@@ -69,7 +69,7 @@ function set_PS1_title
 
     # set PS1
     if [[ -z $IS_REMOTE_SESSION ]]; then
-	export PS1="\n(\[\e[32m\]\u@\h) \[\e[33m\]\w\[\e[0m\]\n\$ "
+	export PS1="\n\[\e[32m\](\u@\h) \[\e[33m\]\w\[\e[0m\]\n\$ "
     else
 	export PS1="\n\[\e[32m\]\u@\h \[\e[33m\]\w\[\e[0m\]\n\$ "
     fi
