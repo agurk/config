@@ -28,7 +28,10 @@ export HISTCONTROL=$HISTCONTROL${HISTCONTROL+,}ignoredups
  alias egrep='egrep --color=auto'              # show differences in colour
  alias fgrep='fgrep --color=auto'              # show differences in colour
  alias igrep='grep -i'
- alias lookfor='ls -lrt | igrep '
+ alias lf='ls -lrt | igrep '
+ alias c="connect.sh"
+ alias f="find . -name"
+ alias fx="find . -iname"
 #
 # Some shortcuts for different directory listings
  alias ls='ls -hF --color=tty'                 # classify files in colour
