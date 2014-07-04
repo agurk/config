@@ -63,7 +63,7 @@ if ! shopt -oq posix; then
 fi
 
 export SVN_EDITOR=vim
-
+export EDITOR=vim
 
 function set_PS1_title
 {
