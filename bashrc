@@ -39,11 +39,6 @@ export HISTSIZE=50000
  alias dir='ls --color=auto --format=vertical'
  alias vdir='ls --color=auto --format=long'
 
-# Load local customisations
- if [ -f "${HOME}/.bashrc.local" ]; then
-   source "${HOME}/.bashrc.local"
- fi
-
 # other
 alias reload_config="source ${HOME}/.bashrc"
 
@@ -99,3 +94,8 @@ function set_PS1_title
 }
 
 set_PS1_title
+
+# Load local customisations
+ if [ -f "${HOME}/.bashrc.local" ]; then
+   source "${HOME}/.bashrc.local"
+ fi
