@@ -79,7 +79,7 @@ function set_PS1_title
     	if [[ -z $IS_REMOTE_SESSION ]]; then
     	    PROMPT_COMMAND='printf "\033]0;%s\007" "${PWD/#$HOME/~}"'
     	else
-    	    PROMPT_COMMAND='printf "\033]0;%s@%s %s\007" "${USER}" "${HOSTNAME%%.*}" "${PWD/#$HOME/~}"'
+    	    PROMPT_COMMAND='printf "\033]0;$TITLE_CHARS%s@%s %s\007" "${USER}" "${HOSTNAME%%.*}" "${PWD/#$HOME/~}$TITLE_CHARS"'
     	fi
     
         ;;
