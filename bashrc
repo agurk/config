@@ -39,11 +39,6 @@ export HISTSIZE=50000
  alias dir='ls --color=auto --format=vertical'
  alias vdir='ls --color=auto --format=long'
 
-# Load local customisations
- if [ -f "${HOME}/.bashrc.local" ]; then
-   source "${HOME}/.bashrc.local"
- fi
-
 # other
 alias reload_config="source ${HOME}/.bashrc"
 
@@ -84,7 +79,7 @@ function set_PS1_title
     	if [[ -z $IS_REMOTE_SESSION ]]; then
     	    PROMPT_COMMAND='printf "\033]0;%s\007" "${PWD/#$HOME/~}"'
     	else
-    	    PROMPT_COMMAND='printf "\033]0;%s@%s %s\007" "${USER}" "${HOSTNAME%%.*}" "${PWD/#$HOME/~}"'
+    	    PROMPT_COMMAND='printf "\033]0;$TITLE_CHARS%s@%s %s\007" "${USER}" "${HOSTNAME%%.*}" "${PWD/#$HOME/~}$TITLE_CHARS"'
     	fi
     
         ;;
@@ -99,3 +94,8 @@ function set_PS1_title
 }
 
 set_PS1_title
+
+# Load local customisations
+ if [ -f "${HOME}/.bashrc.local" ]; then
+   source "${HOME}/.bashrc.local"
+ fi
