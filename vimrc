@@ -1,4 +1,4 @@
-set sts=4
+set ts=4 sts=4 sw=4 noexpandtab
 syntax on
 set number
 set hlsearch
