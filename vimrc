@@ -8,6 +8,9 @@ filetype plugin on
 "get lost ex mode
 :map Q <Nop>
 
+"This unsets the "last search pattern" register by hitting return
+nnoremap <CR> :noh<CR><CR>
+
 set history=200
 set ruler
 set bs=indent,eol,start
